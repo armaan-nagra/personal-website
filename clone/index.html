@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clone | Armaan</title>
+    <link rel="icon" type="image/svg+xml" href="../logo/favicon.svg">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #000;
+            color: #d8d8d8;
+            font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', 'Courier New', monospace;
+            line-height: 1.75;
+            font-size: 14px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        main {
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .back-link {
+            display: block;
+            color: #333;
+            font-size: 12px;
+            text-decoration: none;
+            margin-bottom: 4em;
+            transition: color 0.2s ease;
+            letter-spacing: 0.5px;
+            text-align: left;
+        }
+
+        .back-link:hover {
+            color: #888;
+        }
+
+        h1 {
+            font-size: 16px;
+            font-weight: 400;
+            color: #fff;
+            margin-bottom: 3em;
+            line-height: 1.7;
+        }
+
+        form {
+            width: 100%;
+            text-align: left;
+        }
+
+        .form-group {
+            margin-bottom: 2em;
+        }
+
+        label {
+            display: block;
+            color: #444;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 0.8em;
+        }
+
+        input {
+            width: 100%;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #1a1a1a;
+            color: #fff;
+            font-family: inherit;
+            font-size: 14px;
+            padding: 0.6em 0;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus {
+            border-bottom-color: #333;
+        }
+
+        input::placeholder {
+            color: #2a2a2a;
+        }
+
+        button {
+            width: 100%;
+            background: transparent;
+            border: none;
+            color: #666;
+            font-family: inherit;
+            font-size: 13px;
+            padding: 1.5em 0;
+            cursor: pointer;
+            transition: color 0.2s ease;
+            margin-top: 1em;
+            letter-spacing: 0.5px;
+        }
+
+        button:hover {
+            color: #fff;
+        }
+
+        button::after {
+            content: ' →';
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        button:hover::after {
+            opacity: 1;
+        }
+
+        button:disabled {
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+
+        .success-message {
+            color: #444;
+            font-size: 13px;
+            margin-top: 1.5em;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <a href="../" class="back-link">← back</a>
+        
+        <h1>Interested in cloning yourself?</h1>
+
+        <form id="waitlist-form">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <button type="submit">Register interest</button>
+        </form>
+    </main>
+
+    <script>
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby_E0uK3woqIIG7yM2kQHMrQsPKmxu1F_s1A_UhKxmQV-1f0J5QPwYtjEU09bFY2QrZwQ/exec';
+        
+        const form = document.getElementById('waitlist-form');
+        
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const button = form.querySelector('button');
+            const originalText = button.textContent;
+            button.textContent = 'Submitting...';
+            button.disabled = true;
+            
+            const data = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value
+            };
+            
+            try {
+                await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                // Replace form with success message
+                const heading = document.querySelector('h1');
+                heading.textContent = "You're on the list.";
+                form.innerHTML = '<p class="success-message">— Armaan</p>';
+                
+            } catch (error) {
+                button.textContent = 'Something went wrong';
+                button.disabled = false;
+                setTimeout(() => {
+                    button.textContent = originalText;
+                }, 2000);
+            }
+        });
+    </script>
+</body>
+</html>
