@@ -51,14 +51,38 @@ footer {
     text-align: center;
 }
 
-footer p {
-    margin-bottom: 0;
-    color: #444;
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: baseline;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
     font-size: 13px;
+    color: #444;
 }
 
-footer a {
+.footer-links a {
     color: #444;
+}
+
+.footer-links a:not(:last-child)::after {
+    content: '|';
+    margin: 0 0.65em;
+    color: #444;
+    pointer-events: none;
+}
+
+.blog-lede {
+    color: #fff;
+    margin-bottom: 1em;
+}
+
+.blog-empty {
+    color: #666;
+    margin-bottom: 1.4em;
 }
 
 @media (max-width: 768px) {
