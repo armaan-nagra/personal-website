@@ -22,21 +22,6 @@ main {
     width: 100%;
 }
 
-nav {
-    margin-bottom: 2.5em;
-}
-
-nav a {
-    color: #444;
-    font-size: 13px;
-    text-decoration: none;
-    transition: color 0.2s ease;
-}
-
-nav a:hover {
-    color: #fff;
-}
-
 p {
     margin-bottom: 1.4em;
 }
