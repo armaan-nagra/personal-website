@@ -12,8 +12,13 @@ body {
     font-size: 14px;
     min-height: 100vh;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
+    padding: 48px 40px 60px;
+}
+
+body.site-home {
+    align-items: center;
     padding: 40px;
 }
 
@@ -68,6 +73,10 @@ footer {
     color: #444;
 }
 
+.footer-links a:hover {
+    color: #fff;
+}
+
 .footer-links a:not(:last-child)::after {
     content: '|';
     margin: 0 0.65em;
@@ -75,19 +84,133 @@ footer {
     pointer-events: none;
 }
 
-.blog-lede {
-    color: #fff;
-    margin-bottom: 1em;
+.post-back {
+    display: inline-block;
+    color: #555;
+    font-size: 13px;
+    margin-bottom: 2.25em;
 }
 
-.blog-empty {
-    color: #666;
-    margin-bottom: 1.4em;
+.post-back:hover {
+    color: #fff;
+}
+
+.blog-heading {
+    font-size: 1em;
+    font-weight: 500;
+    color: #fff;
+    margin-bottom: 2em;
+    letter-spacing: 0.02em;
+}
+
+.post-list {
+    list-style: none;
+    margin: 0 0 0.5em;
+    padding: 0;
+}
+
+.post-list li {
+    margin-bottom: 0.85em;
+}
+
+.post-list a {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.35em 1.15em;
+    color: #d8d8d8;
+}
+
+.post-list a:hover {
+    color: #fff;
+}
+
+.post-list a:hover time {
+    color: #888;
+}
+
+.post-list time {
+    flex: 0 0 auto;
+    min-width: 7.75em;
+    font-size: 13px;
+    color: #555;
+    font-variant-numeric: tabular-nums;
+}
+
+.post-list-title {
+    flex: 1 1 12em;
+    min-width: 0;
+}
+
+.post-header {
+    margin-bottom: 2em;
+}
+
+.post-title {
+    font-size: 1.05em;
+    font-weight: 500;
+    color: #fff;
+    line-height: 1.45;
+    margin-bottom: 0.5em;
+}
+
+.post-date {
+    display: block;
+    font-size: 13px;
+    color: #555;
+    font-variant-numeric: tabular-nums;
+}
+
+article.post p:last-child {
+    margin-bottom: 0;
+}
+
+.reading-intro {
+    color: #888;
+    font-size: 13px;
+    margin: -0.5em 0 2em;
+    line-height: 1.65;
+}
+
+.reading-label {
+    color: #555;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    margin: 2.25em 0 1em;
+}
+
+.reading-intro + .reading-label {
+    margin-top: 0;
+}
+
+.reading-list {
+    list-style: none;
+    margin: 0 0 0.25em;
+    padding: 0;
+}
+
+.reading-list li {
+    margin-bottom: 0.65em;
+    color: #d8d8d8;
+    line-height: 1.65;
+}
+
+.reading-list a {
+    color: #d8d8d8;
+}
+
+.reading-list a:hover {
+    color: #fff;
 }
 
 @media (max-width: 768px) {
     body {
-        padding: 30px 20px;
+        padding: 36px 20px 48px;
         font-size: 14px;
+    }
+
+    body.site-home {
+        padding: 30px 20px;
     }
 }
